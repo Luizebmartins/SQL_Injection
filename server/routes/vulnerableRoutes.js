@@ -16,7 +16,7 @@ router.get('/products/:nome', async (req, res) => {
 router.post('/login', async (req, res) => {
     const userData = req.body
     try {
-        const user = await database.query(`select * from usuarios where login = '${userData.nome}' and senha = '${userData.senha}'`)
+        const user = await database.query(`select * from usuarios where login = '${userData.login}' and senha = '${userData.senha}'`)
         if(!user.length) throw new Error ('Dados incorretos')
 
         res.status(200).json(user)
